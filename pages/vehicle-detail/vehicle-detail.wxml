@@ -1,0 +1,92 @@
+<!--车辆详情页 · 玻璃拟态风格-->
+<view class="page">
+  <view class="search-bar-wrap">
+    <input
+      class="search-input"
+      placeholder="搜索其他车型 / 续航"
+      value="{{searchKeyword}}"
+      bindinput="onSearchInput"
+      bindconfirm="onSearchConfirm"
+    />
+  </view>
+
+  <scroll-view wx:if="{{detail}}" scroll-y class="content" enhanced show-scrollbar="{{false}}">
+    <!-- 顶部车辆图片轮播 -->
+    <view class="detail-hero">
+      <swiper class="detail-swiper" indicator-dots circular>
+        <swiper-item wx:for="{{detail.images}}" wx:key="*this">
+          <view class="detail-banner glass-banner">
+            <image class="detail-img" src="{{item}}" mode="aspectFill" />
+            <view class="banner-gradient"></view>
+          </view>
+        </swiper-item>
+      </swiper>
+    </view>
+
+    <!-- 基础信息玻璃卡片 -->
+    <view class="glass-card">
+      <view class="glass-card-inner info">
+        <view class="name-row">
+          <view class="name">{{detail.name}}</view>
+          <view class="tag-row">
+            <text class="tag tag-primary" wx:if="{{detail.isHot}}">热租</text>
+            <text class="tag tag-accent" wx:if="{{detail.availableCount > 0}}">
+              可租 {{detail.availableCount}} 台
+            </text>
+          </view>
+        </view>
+
+        <view class="price-row">
+          <text class="price">
+            {{detail.priceUnit === '月' ? detail.price + ' 元/月' : '¥ ' + detail.price + '/天'}}
+          </text>
+          <text class="price-unit" wx:if="{{detail.deposit}}">押金 {{detail.deposit}} 元</text>
+        </view>
+
+        <view class="specs">
+          <view class="spec-item">
+            <text class="k">品牌</text>
+            <text class="v">{{detail.brand}}</text>
+          </view>
+          <view class="spec-item">
+            <text class="k">电压</text>
+            <text class="v">{{detail.voltage}}</text>
+          </view>
+          <view class="spec-item">
+            <text class="k">续航</text>
+            <text class="v">{{detail.range}}</text>
+          </view>
+          <view class="spec-item" wx:if="{{detail.battery}}">
+            <text class="k">电池</text>
+            <text class="v">{{detail.battery}}</text>
+          </view>
+        </view>
+
+        <view class="note-card" wx:if="{{detailRemarks.length}}">
+          <view class="note-title">备注说明</view>
+          <view
+            class="note-item"
+            wx:for="{{detailRemarks}}"
+            wx:key="index"
+          >
+            <text class="note-dot">•</text>
+            <text class="note-text">{{item}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 联系店铺 -->
+    <view class="glass-card contact-card" bindtap="onCall">
+      <view class="glass-card-inner contact-inner">
+        <view class="contact-text">
+          <text class="contact-title">联系店铺租车</text>
+          <text class="contact-sub">咨询租金、押金、取车时间等详情</text>
+        </view>
+        <text class="phone">{{storeInfo.phone}}</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="empty" wx:else>车辆不存在</view>
+</view>

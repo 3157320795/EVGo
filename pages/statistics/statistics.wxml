@@ -1,0 +1,37 @@
+<!--统计页-->
+<view class="page">
+  <view class="search-bar-wrap">
+    <input class="search-input" placeholder="搜索车辆" value="{{searchKeyword}}" bindinput="onSearchInput" bindconfirm="onSearchConfirm" />
+  </view>
+  <scroll-view class="scroll-body" scroll-y enhanced show-scrollbar="{{false}}">
+  <!-- 汇总数据 -->
+  <view class="summary">
+    <view class="sum-item">
+      <text class="sum-value">{{totalSales}}</text>
+      <text class="sum-label">总销量</text>
+    </view>
+    <view class="sum-item">
+      <text class="sum-value">{{list.length}}</text>
+      <text class="sum-label">车型数</text>
+    </view>
+  </view>
+
+  <!-- 销量排行 -->
+  <view class="section">
+    <view class="section-title">销量排行</view>
+    <view class="rank-list">
+      <view class="rank-item" wx:for="{{list}}" wx:key="id" data-id="{{item.id}}" bindtap="toDetail">
+        <view class="rank-num {{index < 3 ? 'top' : ''}}">{{index + 1}}</view>
+        <image class="rank-img" src="{{item.image}}" mode="aspectFill" />
+        <view class="rank-info">
+          <text class="rank-name">{{item.name}}</text>
+          <text class="rank-sales">销量 {{item.sales}}</text>
+        </view>
+        <view class="rank-bar-wrap">
+          <view class="rank-bar" style="width: {{item.barPercent}}%"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  </scroll-view>
+</view>

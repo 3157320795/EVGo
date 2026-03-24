@@ -1,0 +1,42 @@
+<!--我们页 店铺信息与联系方式-->
+<view class="page">
+  <view class="search-bar-wrap">
+    <input class="search-input" placeholder="搜索车辆" value="{{searchKeyword}}" bindinput="onSearchInput" bindconfirm="onSearchConfirm" />
+  </view>
+  <scroll-view class="scroll-body" scroll-y enhanced show-scrollbar="{{false}}">
+  <view class="header">
+    <view class="store-name">瑞驰出行 · 换电小屋</view>
+    <view class="slogan">电动车租赁</view>
+  </view>
+
+  <view class="section intro">
+    <view class="section-title">店铺介绍</view>
+    <text class="intro-text">{{storeInfo.intro}}</text>
+  </view>
+
+  <view class="section contact">
+    <view class="section-title">联系方式</view>
+    <view class="contact-item" bindtap="onCopyAddress">
+      <text class="icon">📍</text>
+      <view class="content">
+        <text class="label">店铺地址</text>
+        <text class="value">{{storeInfo.address}}</text>
+      </view>
+    </view>
+    <view class="contact-item" bindtap="onCall">
+      <text class="icon">📞</text>
+      <view class="content">
+        <text class="label">联系电话</text>
+        <text class="value highlight">{{storeInfo.phone}}</text>
+      </view>
+    </view>
+    <view class="contact-item">
+      <text class="icon">🕐</text>
+      <view class="content">
+        <text class="label">营业时间</text>
+        <text class="value">{{storeInfo.workTime}}</text>
+      </view>
+    </view>
+  </view>
+  </scroll-view>
+</view>

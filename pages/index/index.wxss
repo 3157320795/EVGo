@@ -1,0 +1,210 @@
+/* 首页 · 玻璃拟态布局 */
+page {
+  height: 100%;
+  background: var(--bg-page-solid);
+}
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.page .scroll-body {
+  flex: 1;
+  height: 0;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* 顶部轮播 */
+.hero-banner {
+  padding: 24rpx 28rpx 8rpx;
+}
+.banner-swiper {
+  width: 100%;
+  height: 360rpx;
+}
+.banner-item {
+  height: 100%;
+}
+.glass-banner {
+  position: relative;
+  height: 100%;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.24), rgba(255, 255, 255, 1));
+  border: 1rpx solid rgba(148, 163, 184, 0.4);
+  box-shadow: var(--shadow-strong);
+}
+.banner-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0.98;
+}
+.banner-gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(248, 250, 252, 0.1), rgba(15, 23, 42, 0.4)),
+    linear-gradient(to top, rgba(15, 23, 42, 0.45), transparent 60%);
+}
+.banner-info {
+  position: absolute;
+  left: 36rpx;
+  right: 36rpx;
+  bottom: 40rpx;
+}
+.banner-tag-row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 18rpx;
+}
+.banner-title {
+
+  font-size: 38rpx;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 4rpx 14rpx rgba(15, 23, 42, 0.15);
+  margin-bottom: 8rpx;
+}
+.banner-sub {
+  font-size: 24rpx;
+  color: var(--text-weak);
+}
+
+/* 状态卡片 */
+.status-card {
+  margin-top: 22rpx;
+}
+.status-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 24rpx;
+}
+.status-item {
+  flex: 1;
+  text-align: center;
+}
+.status-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8rpx;
+  margin-bottom: 10rpx;
+}
+.status-icon {
+  font-size: 24rpx;
+  opacity: 0.9;
+}
+.status-label {
+  display: block;
+  font-size: 22rpx;
+  color: var(--text-weak);
+}
+.status-value {
+  display: block;
+  font-size: 30rpx;
+  color: var(--text-title);
+  font-weight: 600;
+}
+.status-time {
+  display: block;
+}
+.status-value-prefix {
+  font-size: 22rpx;
+  color: var(--text-weak);
+}
+.status-value.highlight {
+  margin-top: 16rpx;
+  color: var(--primary-strong);
+}
+.price-strong {
+  font-size: 32rpx;
+}
+.price-suffix {
+  font-size: 22rpx;
+  margin-left: 4rpx;
+  opacity: 0.8;
+}
+.status-badge {
+  display: inline-flex;
+  margin-top: 16rpx;
+  align-items: center;
+  padding: 10rpx 18rpx;
+  border-radius: 999rpx;
+  font-size: 22rpx;
+  color: var(--accent);
+  background: rgba(239, 246, 255, 0.95);
+  border: 1rpx solid rgba(191, 219, 254, 0.95);
+}
+
+/* 介绍卡片 */
+.intro-card .intro-text {
+  font-size: 26rpx;
+  color: var(--text-body);
+  line-height: 1.9;
+}
+
+/* 联系方式卡片 */
+.contact-card .contact-row {
+  display: flex;
+  align-items: flex-start; /* 默认顶部对齐 */
+  gap: 16rpx;
+  padding: 22rpx 0;
+}
+.contact-card .contact-row.contact-row-center {
+  align-items: center; /* 电话这一行垂直居中（提升选择器优先级） */
+}
+.contact-row-center {
+  align-items: center; /* 电话这一行垂直居中 */
+}
+.contact-card .contact-row + .contact-row {
+  margin-top: 4rpx;
+}
+.contact-card .contact-row:active {
+  background: rgba(226, 232, 240, 0.8);
+  margin: 0 -16rpx;
+  padding-left: 16rpx;
+  padding-right: 16rpx;
+  border-radius: calc(var(--radius) - 8rpx);
+}
+
+.contact-chip {
+  flex-shrink: 0; /* 固定大小，不随右侧内容压缩 */
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: rgba(239, 246, 255, 0.96);
+  color: var(--accent);
+  font-size: 44rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+}
+.contact-info-title {
+  font-size: 22rpx;
+  color: var(--text-weak);
+}
+.contact-info-text {
+  font-size: 28rpx;
+  color: var(--text-title);
+}
+.contact-info-text.strong {
+  font-size: 28rpx;
+  color: var(--primary-strong);
+  font-weight: 600;
+}
+
+.contact-actions {
+  margin-top: 32rpx;
+  display: flex;
+  justify-content: flex-start;
+}

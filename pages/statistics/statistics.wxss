@@ -1,0 +1,140 @@
+/* 统计页 - 玻璃拟态风格（明亮） */
+page {
+  height: 100%;
+  background: var(--bg-page-solid);
+}
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.page .scroll-body {
+  flex: 1;
+  height: 0;
+  padding: 28rpx;
+  padding-bottom: calc(36rpx + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}
+
+.summary {
+  display: flex;
+  gap: 24rpx;
+  margin-bottom: 24rpx;
+}
+.sum-item {
+  flex: 1;
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  padding: 40rpx 26rpx;
+  border: 1rpx solid rgba(148, 163, 184, 0.4);
+  box-shadow: var(--shadow);
+}
+.sum-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.22), transparent 60%);
+  opacity: 0.85;
+}
+.sum-item:nth-child(2)::before {
+  background: radial-gradient(circle at 0% 0%, rgba(74, 222, 128, 0.28), transparent 60%);
+}
+.sum-item > view,
+.sum-item > text {
+  position: relative;
+  z-index: 1;
+}
+.sum-value {
+  font-size: 52rpx;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 10rpx;
+  color: var(--text-title);
+}
+.sum-label {
+  font-size: 24rpx;
+  color: var(--text-weak);
+}
+
+.section {
+  margin-top: 8rpx;
+}
+.section .glass-card-inner {
+  padding: 34rpx 32rpx 24rpx;
+}
+
+.rank-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid rgba(30, 41, 59, 0.85);
+}
+.rank-item:last-child {
+  border-bottom: none;
+}
+.rank-item:active {
+  opacity: 0.9;
+}
+.rank-num {
+  width: 52rpx;
+  height: 52rpx;
+  line-height: 52rpx;
+  text-align: center;
+  font-size: 26rpx;
+  font-weight: 600;
+  color: var(--text-weak);
+  background: #e5f2ff;
+  border-radius: 16rpx;
+  margin-right: 24rpx;
+  flex-shrink: 0;
+}
+.rank-num.top {
+  color: #fff;
+}
+.rank-list .rank-item:nth-child(1) .rank-num.top {
+  background: linear-gradient(135deg, #eab308, #ca8a04);
+}
+.rank-list .rank-item:nth-child(2) .rank-num.top {
+  background: linear-gradient(135deg, #94a3b8, #64748b);
+}
+.rank-list .rank-item:nth-child(3) .rank-num.top {
+  background: linear-gradient(135deg, #b45309, #92400e);
+}
+.rank-img {
+  width: 112rpx;
+  height: 90rpx;
+  border-radius: 18rpx;
+  margin-right: 24rpx;
+  flex-shrink: 0;
+  background: radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.32), rgba(15, 23, 42, 0.96));
+}
+.rank-info {
+  flex: 1;
+  min-width: 0;
+}
+.rank-name {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: var(--text-title);
+  display: block;
+  margin-bottom: 6rpx;
+}
+.rank-sales {
+  font-size: 22rpx;
+  color: var(--text-weak);
+}
+.rank-bar-wrap {
+  width: 128rpx;
+  height: 14rpx;
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 999rpx;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.rank-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #22c55e, #0ea5e9);
+  border-radius: 999rpx;
+  transition: width 0.3s ease;
+}

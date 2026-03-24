@@ -1,0 +1,125 @@
+<!--index.wxml 首页 · 电动车租赁 · 玻璃拟态风格-->
+<view class="page">
+  <view class="search-bar-wrap">
+    <input
+      class="search-input"
+      placeholder="搜索可租车型 / 续航 / 价格"
+      value="{{searchKeyword}}"
+      bindinput="onSearchInput"
+      bindconfirm="onSearchConfirm"
+    />
+  </view>
+
+  <scroll-view class="scroll-body" scroll-y enhanced show-scrollbar="{{false}}">
+    <!-- 顶部轮播 · 热门车型 / 活动 -->
+    <view class="hero-banner">
+      <swiper
+        class="banner-swiper"
+        indicator-dots
+        indicator-color="rgba(148,163,184,0.55)"
+        indicator-active-color="#e5f4ff"
+        autoplay
+        circular
+      >
+        <swiper-item wx:for="{{banners}}" wx:key="id">
+          <view class="banner-item glass-banner">
+            <image class="banner-img" src="{{item.image}}" mode="aspectFill" />
+            <view class="banner-gradient"></view>
+            <view class="banner-info">
+              <view class="banner-tag-row">
+                <text class="tag tag-primary">热门车型</text>
+                <text class="tag tag-accent" wx:if="{{item.tag}}">{{item.tag}}</text>
+              </view>
+              <view class="banner-title">{{item.title}}</view>
+              <view class="banner-sub" wx:if="{{item.subTitle}}">{{item.subTitle}}</view>
+            </view>
+          </view>
+        </swiper-item>
+      </swiper>
+    </view>
+
+    <!-- 快速概览 · 营业状态 / 起租价 / 当天可约 -->
+    <view class="glass-card status-card">
+      <view class="glass-card-inner">
+        <view class="status-row">
+        <view class="status-item">
+          <view class="status-label-row">
+            <!-- <text class="status-icon">🕒</text> -->
+            <text class="status-label">营业时间</text>
+          </view>
+          <text class="status-value">
+            <text class="status-value-prefix">周一至周日</text>
+            <text class="status-time">8:00-18:00</text>
+          </text>
+        </view>
+        <view class="status-item">
+          <view class="status-label-row">
+            <!-- <text class="status-icon">¥</text> -->
+            <text class="status-label">起租价</text>
+          </view>
+          <text class="status-value highlight">
+            <text class="price-strong">0元/天</text>
+            <text class="price-suffix">起</text>
+          </text>
+        </view>
+        <view class="status-item" bindtap="onCopyPhone">
+          <text class="status-label">联系电话</text>
+          <text class="status-badge">{{storeInfo.phone}}</text>
+        </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 店铺介绍 -->
+    <view class="glass-card intro-card">
+      <view class="glass-card-inner">
+        <view class="section-title">
+          <view class="section-title-dot"></view>
+          <text>店铺介绍</text>
+          <text class="section-title-sub">专业电动车租赁 · 绿色安心出行</text>
+        </view>
+        <text class="intro-text">{{storeInfo.intro}}</text>
+      </view>
+    </view>
+
+    <!-- 店铺地址与联系方式 -->
+    <view class="glass-card contact-card">
+      <view class="glass-card-inner">
+        <view class="section-title">
+          <view class="section-title-dot"></view>
+          <text>联系我们</text>
+          <text class="section-title-sub">导航到店 · 一键电话咨询</text>
+        </view>
+
+        <!-- 统一结构：圆形字标 + 标题 + 文本 -->
+        <view class="contact-row" bindtap="onCopyAddress">
+          <view class="contact-chip">址</view>
+          <view class="contact-info">
+            <!-- <text class="contact-info-title">店铺地址</text> -->
+            <text class="contact-info-text">{{storeInfo.address}}</text>
+          </view>
+        </view>
+
+        <view class="contact-row contact-row-center" bindtap="onCall">
+          <view class="contact-chip">话</view>
+          <view class="contact-info">
+            <!-- <text class="contact-info-title">联系电话</text> -->
+            <text class="contact-info-text strong">{{storeInfo.phone}}</text>
+          </view>
+        </view>
+
+        <view class="contact-row contact-row-center">
+          <view class="contact-chip">时</view>
+          <view class="contact-info">
+            <!-- <text class="contact-info-title">营业时间</text> -->
+            <text class="contact-info-text">{{storeInfo.workTime}}</text>
+          </view>
+        </view>
+
+        <view class="contact-actions">
+          <button class="btn-primary" bindtap="toVehicleList">立即查看可租车型</button>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

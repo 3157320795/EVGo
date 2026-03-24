@@ -1,0 +1,120 @@
+/* 我们页 - 玻璃拟态风格（明亮） */
+page {
+  height: 100%;
+  background: var(--bg-page-solid);
+}
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.page .scroll-body {
+  flex: 1;
+  height: 0;
+  padding-bottom: calc(36rpx + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}
+
+.header {
+  position: relative;
+  margin-bottom: 28rpx;
+  padding: 80rpx 40rpx 64rpx;
+  color: var(--text-title);
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 18rpx 60rpx rgba(148, 163, 184, 0.35);
+}
+.header::before {
+  content: '';
+  position: absolute;
+  inset: -40rpx;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.28), transparent 55%),
+    radial-gradient(circle at 100% 10%, rgba(74, 222, 128, 0.36), transparent 60%),
+    linear-gradient(145deg, #eff6ff, #f9fafb);
+  opacity: 0.98;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  inset: 1rpx;
+  border-radius: inherit;
+  border: 1rpx solid rgba(148, 163, 184, 0.55);
+  pointer-events: none;
+}
+.store-name,
+.slogan {
+  position: relative;
+  z-index: 1;
+}
+.store-name {
+  font-size: 46rpx;
+  font-weight: 700;
+  margin-bottom: 18rpx;
+  letter-spacing: 1rpx;
+}
+.slogan {
+  font-size: 28rpx;
+  opacity: 0.96;
+}
+
+.section {
+  margin: 0 28rpx 28rpx;
+}
+.section.intro,
+.section.contact {
+  /* 复用通用 glass-card 视觉 */
+  padding: 0;
+}
+.section .glass-card-inner {
+  padding: 34rpx 32rpx;
+}
+.intro .intro-text {
+  font-size: 26rpx;
+  color: var(--text-body);
+  line-height: 1.9;
+}
+
+.contact .contact-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 26rpx 0;
+  border-bottom: 1rpx solid rgba(30, 41, 59, 0.9);
+}
+.contact .contact-item:last-child {
+  border-bottom: none;
+}
+.contact .contact-item:active {
+  background: rgba(15, 23, 42, 0.86);
+  margin: 0 -32rpx;
+  padding-left: 32rpx;
+  padding-right: 32rpx;
+  border-radius: var(--radius);
+}
+.contact .icon {
+  font-size: 40rpx;
+  margin-right: 24rpx;
+  flex-shrink: 0;
+  width: 52rpx;
+  text-align: center;
+}
+.contact .content {
+  flex: 1;
+  min-width: 0;
+}
+.contact .label {
+  display: block;
+  font-size: 22rpx;
+  color: var(--text-weak);
+  margin-bottom: 8rpx;
+}
+.contact .value {
+  font-size: 28rpx;
+  color: var(--text-title);
+  font-weight: 500;
+}
+.contact .value.highlight {
+  color: #74c691;
+  font-weight: 600;
+  font-size: 30rpx;
+}
