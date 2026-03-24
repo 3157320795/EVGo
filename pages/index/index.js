@@ -15,6 +15,11 @@ Page({
     getApp().globalData.searchKeyword = k
     wx.switchTab({ url: '/pages/vehicle/vehicle' })
   },
+  onBannerTap(e) {
+    const id = e.currentTarget.dataset.id
+    if (!id) return
+    wx.navigateTo({ url: `/pages/vehicle-detail/vehicle-detail?id=${id}` })
+  },
   toVehicleList() {
     const k = (this.data.searchKeyword || '').trim()
     getApp().globalData.searchKeyword = k

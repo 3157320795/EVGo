@@ -22,7 +22,7 @@
         circular
       >
         <swiper-item wx:for="{{banners}}" wx:key="id">
-          <view class="banner-item glass-banner">
+          <view class="banner-item glass-banner" data-id="{{item.id}}" bindtap="onBannerTap">
             <image class="banner-img" src="{{item.image}}" mode="aspectFill" />
             <view class="banner-gradient"></view>
             <view class="banner-info">
